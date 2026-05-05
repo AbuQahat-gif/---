@@ -4,24 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>كويز مهارات الاتصال - تجميع القحطاني </title>
-    <style>
-        :root { --bg-dark: #121212; --card-bg: #1e1e1e; --text-main: #e0e0e0; --accent: #3498db; --success: #2ecc71; --error: #e74c3c; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center; }
-        #quiz-page { width: 100%; max-width: 800px; display: block; } /* متاح مباشرة */
-        h1 { text-align: center; color: var(--accent); }
-        .question-card { background: var(--card-bg); padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #333; }
-        .question-text { font-size: 1.2rem; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .option { background: #2c2c2c; padding: 15px; margin: 10px 0; border-radius: 10px; cursor: pointer; border: 2px solid transparent; transition: 0.3s; }
-        .option:hover { border-color: var(--accent); }
-        .correct { background: var(--success) !important; color: white; font-weight: bold; }
-        .wrong { background: var(--error) !important; color: white; }
-        .reason { display: none; margin-top: 15px; padding: 12px; background: #253d2f; border-right: 4px solid var(--success); font-size: 0.95rem; border-radius: 4px; }
-        #score-float { position: fixed; bottom: 20px; left: 20px; background: var(--accent); color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000; }
-        .dua-section { text-align: center; margin-top: 40px; padding: 25px; background: #1a2a3a; border-radius: 12px; font-style: italic; }
-        .disabled { pointer-events: none; opacity: 0.7; }
-    </style>
+<style> 
+:root { --bg-dark: #121212; --card-bg: #1e1e1e; --text-main: #e0e0e0; --accent: #3498db; --success: #2ecc71; --error: #e74c3c; } 
+
+body { 
+    background-color: var(--bg-dark); 
+    color: var(--text-main); 
+    font-family: 'Segoe UI', sans-serif; 
+    margin: 0; 
+    padding: 10px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    /* --- كود الحماية الجديد --- */
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    /* ------------------------ */
+} 
+
+#quiz-page { width: 100%; max-width: 800px; display: block; } 
+h1 { text-align: center; color: var(--accent); } 
+.question-card { background: var(--card-bg); padding: 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #333; } 
+.question-text { font-size: 1.2rem; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 10px; } 
+.option { background: #2c2c2c; padding: 15px; margin: 10px 0; border-radius: 10px; cursor: pointer; border: 2px solid transparent; transition: 0.3s; } 
+.option:hover { border-color: var(--accent); } 
+.correct { background: var(--success) !important; color: white; font-weight: bold; } 
+.wrong { background: var(--error) !important; color: white; } 
+.reason { display: none; margin-top: 15px; padding: 12px; background: #253d2f; border-right: 4px solid var(--success); font-size: 0.95rem; border-radius: 4px; } 
+#score-float { position: fixed; bottom: 20px; left: 20px; background: var(--accent); color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.5); z-index: 1000; } 
+.dua-section { text-align: center; margin-top: 40px; padding: 25px; background: #1a2a3a; border-radius: 12px; font-style: italic; } 
+.disabled { pointer-events: none; opacity: 0.7; } 
+</style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
 <div id="score-float">الدرجة: <span id="user-score">0</span></div>
 
